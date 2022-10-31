@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3>あそんでみる</h3>
+        <p>モデルの作成完了...!</p>
+        <div class="mb-3">
+            <form method="post">
+                <label for="predtext" class="form-label">分類したい文章を入力</label>
+                <textarea class="form-control" id="predtext" name="predtext" rows="3"></textarea>
+                <button type="submit" class="btn btn-primary">実行</button>
+            </form>
+        {% if result %}
+            <h3>結果発表</h3>
+            <p>分類結果: {{ result }}</p>
+
+            <h3>みんなでつくろう</h3>
+            <label for="cor_label" class="form-label">正解ラベルを選択</label>
+            <form action="/insert" method="post">
+                <select class="form-select" id="cor_label" name="cor_label">
+                    <option value="スポーツ">スポーツ</option>
+                    <option value="少女漫画">少女漫画</option>
+                    <option value="歴史">歴史</option>
+                    <option value="バトル">バトル</option>
+                </select>
+                <button type="submit" class="btn btn-primary">登録</button>
+            </form>
+
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
